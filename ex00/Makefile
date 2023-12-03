@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 SRCS = src/main.cpp\
+		src/ScalarConverter.cpp
 
 INCL = include/ScalarConverter.hpp
 
