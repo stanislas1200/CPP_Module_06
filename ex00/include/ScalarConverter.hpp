@@ -1,6 +1,5 @@
 #ifndef ScalarConverter_HPP
 # define ScalarConverter_HPP
-#define _GLIBCXX_USE_C99 1
 # include <iostream>
 # include <sstream>
 # include <cmath>
@@ -13,12 +12,12 @@
 # define C "\x1b[0m"
 
 class ScalarConverter {
-	public:
+	private:
 		ScalarConverter(void);
 		ScalarConverter(ScalarConverter const & src);
 		~ScalarConverter(void);
 		ScalarConverter & operator=(ScalarConverter const & rhs);
-
+	public:
 		static void convert(std::string const & str) ;
 
 		class Check {
