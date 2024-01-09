@@ -2,7 +2,6 @@
 # define SERIALIZER_HPP
 
 # include <iostream>
-# include <stdint.h>
 # include <iomanip>
 # include <string>
 # define B "\x1b[1m\x1b[48;2;188;143;143m"

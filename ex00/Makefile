@@ -6,7 +6,7 @@
 #    By: sgodin <sgodin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/13 14:39:47 by sgodin            #+#    #+#              #
-#    Updated: 2023/08/23 15:47:47 by sgodin           ###   ########.fr        #
+#    Updated: 2024/01/09 13:29:18 by sgodin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS = src/main.cpp\
 
 INCL = include/ScalarConverter.hpp
 
-NAME =  a.out
+NAME =  convert
 
 GCC = g++ -std=c++98 -Wall -Wextra -Werror #-fsanitize=address
 

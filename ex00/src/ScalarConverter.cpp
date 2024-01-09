@@ -14,16 +14,8 @@ ScalarConverter & ScalarConverter::operator=(ScalarConverter const & rhs) {
 }
 
 void ScalarConverter::convert(std::string const & str) {
-	// std::cout << std::fixed;
-	// if (str.length() == 1 && !isdigit(str[0])) {
-	// 	std::cout << "char: " << MB << "'" << str[0] << "'" << C << std::endl;
-	// 	std::cout << "int: " << MB << static_cast<int>(str[0]) << C << std::endl;
-	// 	std::cout << "float: " << MB << static_cast<float>(str[0]) << ".0f" << C << std::endl;
-	// 	std::cout << "double: " << MB << static_cast<double>(str[0]) << ".0" << C << std::endl;
-	// 	return ;
-	// }
 	if (Check::isInt(str)) {
-		int i = atoi(str.c_str());
+		int i = std::atoi(str.c_str());
 		std::cout << "Input is an int: " << MB << "'" << str << "'" << C << std::endl;
 		std::cout << "char: ";
 		if (errno == ERANGE || Check::overFlow(str))
@@ -37,8 +29,8 @@ void ScalarConverter::convert(std::string const & str) {
 			std::cout << MB << "impossible" << C << std::endl;
 		else
 			std::cout << MB << static_cast<int>(i) << C << std::endl;
-		std::cout << "float: " << MB << static_cast<float>( atof(str.c_str())) << ".0f" << C << std::endl;
-		std::cout << "double: " << MB << static_cast<double>( atof(str.c_str())) << ".0" << C << std::endl;
+		std::cout << "float: " << MB << static_cast<float>( std::atof(str.c_str())) << ".0f" << C << std::endl;
+		std::cout << "double: " << MB << static_cast<double>( std::atof(str.c_str())) << ".0" << C << std::endl;
 		return ;
 	}
 	if (Check::isChar(str)) {
@@ -50,7 +42,7 @@ void ScalarConverter::convert(std::string const & str) {
 		return ;
 	}
 	if (Check::isDouble(str)) {
-		double d = atof(str.c_str());
+		double d = std::atof(str.c_str());
 		std::cout << "Input is a double: " << MB << "'" << str << "'" << C << std::endl;
 		std::cout << "char: ";
 		if (Check::overFlow(str))
@@ -69,7 +61,7 @@ void ScalarConverter::convert(std::string const & str) {
 		return ;
 	}
 	if (Check::isFloat(str)) {
-		float f = atof(str.c_str());
+		float f = std::atof(str.c_str());
 		std::cout << "Input is a float: " << MB << "'" << str << "'" << C << std::endl;
 		std::cout << "char: ";
 		if (Check::overFlow(str))
@@ -113,8 +105,6 @@ bool ScalarConverter::Check::isFloat(std::string const & str) {
 
 	if (str == "nanf" || str == "+inff" || str == "-inff" || str == "inff")
 		return true;
-	// if (str.length() == 1 && !isdigit(str[0]))
-	// 	return false;
 	if (str.length() > 1 && !isdigit(str[0]) && str[0] != '-' && str[0] != '+')
 		return false;
 	for (size_t i = 1; i < str.length(); i++) {
@@ -133,8 +123,6 @@ bool ScalarConverter::Check::isDouble(std::string const & str) {
 
 	if (str == "nan" || str == "+inf" || str == "-inf" || str == "inf")
 		return true;
-	// if (str.length() == 1 && !isdigit(str[0]))
-	// 	return false;
 	if (str.length() > 1 && !isdigit(str[0]) && str[0] != '-' && str[0] != '+')
 		return false;
 	for (size_t i = 1; i < str.length(); i++) {
@@ -147,9 +135,9 @@ bool ScalarConverter::Check::isDouble(std::string const & str) {
 }
 
 bool ScalarConverter::Check::overFlow(std::string const & str) {
-	if (std::isinf(atof(str.c_str())))
+	if (std::isinf(std::atof(str.c_str())))
 		return true;
-	if (std::isnan(atof(str.c_str())))
+	if (std::isnan(std::atof(str.c_str())))
 		return true;
 	if (str.length() > 11)
 		return true;
